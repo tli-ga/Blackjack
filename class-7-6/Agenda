@@ -1,0 +1,19 @@
+Agenda
+
+Introduction to OOP
+- classes
+- objects
+- instance variables
+- instance methods
+- capturing behaviors and states
+- setters and getters
+- initializing objects
+
+- class methods
+- class variables
+
+- inheritance (is a)
+- composition (has a)
+
+- respond_to?
+- is_a?
