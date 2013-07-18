@@ -136,6 +136,9 @@ end
 class Blackjack
   attr_accessor :deck, :player, :dealer
 
+  BLACKJACK_AMOUNT = 21
+  DEALER_HIT_MIN = 17
+
   def initialize
     @deck = Deck.new
     @player = Player.new("Player1")
@@ -256,28 +259,14 @@ end
     show_flop
     player_turn
     dealer_turn
-    who_won?(player, dealer)
+    who_won?
     play_again
   end
+
 end
 
 game = Blackjack.new
 game.start
-
-player = Player.new("Chris")
-player.add_card(deck.deal_one)
-player.add_card(deck.deal_one)
-player.add_card(deck.deal_one)
-player.add_card(deck.deal_one)
-player.show_hand
-
-dealer = Dealer.new
-dealer.add_card(deck.deal_one)
-dealer.add_card(deck.deal_one)
-dealer.add_card(deck.deal_one)
-dealer.add_card(deck.deal_one)
-dealer.show_hand
-
 
 
 
