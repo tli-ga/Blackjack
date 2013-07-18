@@ -199,10 +199,10 @@ class Blackjack
       #hit
       new_card = deck.deal_one
       puts "Dealing card to #{player.name}: #{new_card}"
-      players.add_card(new_card)
+      player.add_card(new_card)
       puts "#{player.name}'s total is now: #{player.total}"
 
-      black_or_bust?(player)
+      blackjack_or_bust?(player)
     end
     puts "#{player.name} stays with #{player.total}"
   end
@@ -210,33 +210,33 @@ class Blackjack
 def dealer_turn
   puts "Dealer's turn."
 
-  black_or_bust?(dealer)
+  blackjack_or_bust?(dealer)
   while dealer.total < 17
     new_card = deck.deal_one
     puts "Dealing card to dealer: #{new_card}"
     dealer.add_card(new_card)
     puts "Dealer total is now #{dealer.total}"
 
-    black_or_bust?(dealer)
+    blackjack_or_bust?(dealer)
   end
   puts "Dealer stays with #{dealer.total}."
 end
 
-def who_won?
-  if player.total > dealer.total
-    puts "Congratulations, #{player.name} wins!"
-  elsif player.total < dealer.total
-    puts "Sorry, #{player.name} loses."
-  else
-    puts "It's a tie!"
+ def who_won?
+    if player.total > dealer.total
+      puts "Congratulations, #{player.name} wins!"
+    elsif player.total < dealer.total
+      puts "Sorry, #{player.name} loses."
+    else
+      puts "It's a tie!"
+    end
+    play_again?
   end
-  play_again?
-end
 
 def play_again?
   puts ""
   puts "Would you like to play again? 1) yes 2) no, exit"
-  if gets.chomp = '1'
+  if gets.chomp == '1'
     puts "Starting new game..."
     puts ""
     deck = Deck.new
@@ -246,6 +246,9 @@ def play_again?
   else
     puts "Goodbye!"
     exit
+  end
+end
+
 
   def start
     set_player_name
@@ -256,9 +259,6 @@ def play_again?
     who_won?(player, dealer)
     play_again
   end
-
-  def deal_cards
-
 end
 
 game = Blackjack.new
